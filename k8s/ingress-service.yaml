@@ -9,10 +9,17 @@ metadata:
     # ADD ANNOTATION
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     # ADD ANNOTATION
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
 spec:
   ingressClassName: nginx
   # ADD INGRESSCLASSNAME FIELD
+  tls:
+    - hosts:
+        - multi-cluster.germans.dev
+      secretName: multi-cluster-germans-dev
   rules:
+    - host: multi-cluster.germans.dev
     - http:
         paths:
           - path: /?(.*)
