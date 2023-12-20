@@ -16,7 +16,7 @@ spec:
       secretName: multi-cluster-germans-dev
   rules:
     - host: multi-cluster.germans.dev
-    - http:
+      http:
         paths:
           - path: /?(.*)
             # UPDATE PATH
